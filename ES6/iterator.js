@@ -48,3 +48,8 @@ let iterator = iterable[Symbol.iterator]();
 // console.log(iterator.next());
 // console.log(iterator.next());
 for (const a of iterator) console.log(a);
+
+/* Spread syntax */
+const a = [1, 2];
+// a[Symbol.iterator] = null;
+console.log([...a, ...arr, ...set, ...map.values()]);
