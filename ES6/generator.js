@@ -22,7 +22,6 @@ for (const a of gen()) console.log(a);
 
 /**
  * @param i : 시작 값
- * @returns {Generator<number, void, *>}
  */
 function* infinity(i = 0) {
   while (true) yield i++;
@@ -31,7 +30,6 @@ function* infinity(i = 0) {
 /**
  * @param l : 마지막 값
  * @param iter : 받은 이터러블
- * @returns {Generator<*, void, *>}
  */
 function* limit(l, iter) {
   for (const a of iter) {
@@ -42,7 +40,6 @@ function* limit(l, iter) {
 
 /**
  * @param l : 마지막 값
- * @returns {Generator<*, void, *>}
  */
 function* odds(l) {
   for (const a of limit(l, infinity(1))) {
@@ -59,3 +56,16 @@ console.log(iter2.next());
 console.log(iter2.next());
 
 for (const a of odds(40)) console.log(a);
+
+/* for of, 전개 연산자, 구조 분해, 나머지 연산자 */
+console.log(...odds(10));
+console.log([...odds(10), ...odds(20)]);
+
+const [head, ...tail] = odds(5);
+console.log(head);
+console.log(tail);
+
+const [a, b, ...rest] = odds(10);
+console.log(a);
+console.log(b);
+console.log(rest);
